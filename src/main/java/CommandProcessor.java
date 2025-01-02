@@ -11,6 +11,14 @@ public class CommandProcessor {
     private static final String ERROR_UNKNOWN_COMMAND =
             "ERROR: Command not recognized";
 
+    private final TaskRepository taskRepository;
+
+    /**
+     * Creates a CommandProcessor and initializes the task repository.
+     */
+    CommandProcessor() {
+        taskRepository = new TaskRepository();
+    }
     /**
      * Processes a command and executes the corresponding action.
      *
@@ -29,9 +37,7 @@ public class CommandProcessor {
                  */
                 if (arguments.length == 1) {
                     String description = arguments[0];
-                    // TODO: implementation
-                    System.out.println("Task \"" + description +
-                            "\" added successfully");
+                    taskRepository.addTask(description);
                 } else {
                     System.out.println(ERROR_INVALID_ARGUMENTS +
                             ". Use: add \"<description>\"");
