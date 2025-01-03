@@ -9,6 +9,7 @@ import java.util.List;
  * Serves as a repository for managing tasks stored in a JSON file.
  */
 public class TaskRepository {
+    private static final String ERROR_TASK_NOT_FOUND = "ERROR: Task not found";
     private static final Path FILE_PATH =
             Path.of("src/main/resources/tasks.json");
     private List<Task> tasks;
@@ -104,7 +105,39 @@ public class TaskRepository {
                         e.getMessage());
             }
         } else {
-            System.out.println("ERROR: Task not found");
+            System.out.println(ERROR_TASK_NOT_FOUND);
+        }
+    }
+
+    /**
+     * Deletes an existing task.
+     *
+     * @param id The task ID.
+     */
+    public void deleteTask(int id) {
+        // Search for the task with the provided ID
+        boolean taskExists = false;
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                // If found, remove it from the list
+                tasks.remove(task);
+                taskExists = true;
+                break;
+            }
+        }
+
+        // If found, save the changes
+        if (taskExists) {
+            try {
+                saveTasks();
+                System.out.println("Task with ID " + id +
+                        " deleted successfully");
+            } catch (IOException e) {
+                System.out.println("ERROR: Failed to delete task: " +
+                        e.getMessage());
+            }
+        } else {
+            System.out.println(ERROR_TASK_NOT_FOUND);
         }
     }
 }

@@ -71,9 +71,7 @@ public class CommandProcessor {
                 if (arguments.length == 1) {
                     try {
                         int id = Integer.parseInt(arguments[0]);
-                        // TODO: implementation
-                        System.out.println("Task with ID " + id +
-                                " deleted successfully");
+                        taskRepository.deleteTask(id);
                     } catch (NumberFormatException e) {
                         System.out.println(ERROR_INVALID_ID);
                     }
