@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,41 @@ public class TaskRepository {
                     "\" added successfully with ID " + id);
         } catch (IOException e) {
             System.out.println("ERROR: Failed to add task: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Updates the description of an existing task and sets its update
+     * timestamp to the current time.
+     *
+     * @param id          The task ID.
+     * @param description The new task description.
+     */
+    public void updateTask(int id, String description) {
+        // Search for the task with the provided ID
+        boolean taskExists = false;
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                // If found, update the corresponding fields
+                task.setDescription(description);
+                task.setUpdatedAt(LocalDateTime.now());
+                taskExists = true;
+                break;
+            }
+        }
+
+        // If found, save the changes
+        if (taskExists) {
+            try {
+                saveTasks();
+                System.out.println("Task with ID " + id + " updated to \"" +
+                        description + "\" successfully");
+            } catch (IOException e) {
+                System.out.println("ERROR: Failed to update task: " +
+                        e.getMessage());
+            }
+        } else {
+            System.out.println("ERROR: Task not found");
         }
     }
 }

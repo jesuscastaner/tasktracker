@@ -53,16 +53,13 @@ public class CommandProcessor {
                     try {
                         int id = Integer.parseInt(arguments[0]);
                         String description = arguments[1];
-                        // TODO: implementation
-                        System.out.println("Task with ID " + id +
-                                " updated to \"" + description +
-                                "\" successfully");
+                        taskRepository.updateTask(id, description);
                     } catch (NumberFormatException e) {
                         System.out.println(ERROR_INVALID_ID);
                     }
                 } else {
                     System.out.println(ERROR_INVALID_ARGUMENTS +
-                            ". Use: update <id> <description>");
+                            ". Use: update <id> \"<description>\"");
                 }
                 break;
 
