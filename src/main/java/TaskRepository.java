@@ -142,7 +142,8 @@ public class TaskRepository {
     }
 
     /**
-     * Updates the status of an existing task.
+     * Updates the status of an existing task and sets its update timestamp to
+     * the current time.
      *
      * @param id     The task ID.
      * @param status The new task status.
@@ -154,6 +155,7 @@ public class TaskRepository {
             if (task.getId() == id) {
                 // If found, update its status
                 task.setStatus(status);
+                task.setUpdatedAt(LocalDateTime.now());
                 taskExists = true;
                 break;
             }
