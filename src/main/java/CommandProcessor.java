@@ -19,6 +19,7 @@ public class CommandProcessor {
     CommandProcessor() {
         taskRepository = new TaskRepository();
     }
+
     /**
      * Processes a command and executes the corresponding action.
      *
@@ -162,6 +163,31 @@ public class CommandProcessor {
                 }
                 break;
 
+            case "help":
+                /*
+                Command to display help information.
+                Provides a summary of all available commands and their usage.
+                 */
+                System.out.println("Available commands:");
+                System.out.println("  add \"<description>\"          " +
+                        "- Add a new task with given description.");
+                System.out.println("  update <id> \"<description>\"  " +
+                        "- Update description of task with given ID.");
+                System.out.println("  delete <id>                  " +
+                        "- Delete task with given ID.");
+                System.out.println("  mark-todo <id>               " +
+                        "- Mark task with given ID as \"TODO\".");
+                System.out.println("  mark-in-progress <id>        " +
+                        "- Mark task with given ID as \"IN_PROGRESS\".");
+                System.out.println("  mark-done <id>               " +
+                        "- Mark task with given ID as \"DONE\".");
+                System.out.println("  list                         " +
+                        "- List all tasks.");
+                System.out.println("  list <todo|in-progress|done> " +
+                        "- List tasks filtered by status.");
+                System.out.println("  help                         " +
+                        "- Display this help message.");
+                break;
             default:
                 System.out.println(ERROR_UNKNOWN_COMMAND);
                 break;
