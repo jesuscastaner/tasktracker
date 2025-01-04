@@ -184,4 +184,17 @@ public class TaskRepository {
             System.out.println(task.toString());
         }
     }
+
+    /**
+     * Prints all existing tasks with the provided status.
+     *
+     * @param status The task status.
+     */
+    public void listTasks(TaskStatus status) {
+        for (Task task : tasks) {
+            if (task.getStatus() == status) {
+                System.out.println(task.toString());
+            }
+        }
+    }
 }

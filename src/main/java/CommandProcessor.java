@@ -144,19 +144,13 @@ public class CommandProcessor {
                 if (arguments.length == 1) {
                     switch (arguments[0].toLowerCase()) {
                         case "todo":
-                            System.out.println("List of tasks marked as " +
-                                    "\"To do\":");
-                            // TODO: implementation
+                            taskRepository.listTasks(TaskStatus.TODO);
                             break;
                         case "in-progress":
-                            System.out.println("List of tasks marked as " +
-                                    "\"In progress\":");
-                            // TODO: implementation
+                            taskRepository.listTasks(TaskStatus.IN_PROGRESS);
                             break;
                         case "done":
-                            System.out.println("List of tasks marked as " +
-                                    "\"Done\":");
-                            // TODO: implementation
+                            taskRepository.listTasks(TaskStatus.DONE);
                             break;
                         default:
                             System.out.println(ERROR_INVALID_STATUS +
