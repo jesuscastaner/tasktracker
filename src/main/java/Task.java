@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a task with ID, description, status, and creation and update
@@ -10,6 +11,9 @@ public class Task {
     private TaskStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    private static final DateTimeFormatter DATE_TIME_FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     /**
      * Creates an empty Task with uninitialized fields.
@@ -129,10 +133,10 @@ public class Task {
      */
     @Override
     public String toString() {
-        return "Task [id=" + id + ", "
-                + "description=" + description + ", "
-                + "status=" + status + ", "
-                + "createdAt=" + createdAt + ", "
-                + "updatedAt=" + updatedAt + "]";
+        return "ID " + id + ":" +
+                "\n  Description: \"" + description + "\"" +
+                "\n  Status: " + status +
+                "\n  Created at: " + DATE_TIME_FORMATTER.format(createdAt) +
+                "\n  Updated at: " + DATE_TIME_FORMATTER.format(updatedAt);
     }
 }

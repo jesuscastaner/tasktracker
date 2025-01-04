@@ -175,4 +175,13 @@ public class TaskRepository {
             System.out.println(ERROR_TASK_NOT_FOUND);
         }
     }
+
+    /**
+     * Prints all existing tasks.
+     */
+    public void listTasks() {
+        for (Task task : tasks) {
+            System.out.println(task.toString());
+        }
+    }
 }

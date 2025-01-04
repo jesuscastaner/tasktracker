@@ -164,8 +164,7 @@ public class CommandProcessor {
                             break;
                     }
                 } else {
-                    System.out.println("List of all tasks:");
-                    // TODO: implementation
+                    taskRepository.listTasks();
                 }
                 break;
 
