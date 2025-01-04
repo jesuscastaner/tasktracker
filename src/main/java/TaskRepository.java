@@ -140,4 +140,37 @@ public class TaskRepository {
             System.out.println(ERROR_TASK_NOT_FOUND);
         }
     }
+
+    /**
+     * Updates the status of an existing task.
+     *
+     * @param id     The task ID.
+     * @param status The new task status.
+     */
+    public void markTask(int id, TaskStatus status) {
+        // Search for the task with the provided ID
+        boolean taskExists = false;
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                // If found, update its status
+                task.setStatus(status);
+                taskExists = true;
+                break;
+            }
+        }
+
+        // If found, save the changes
+        if (taskExists) {
+            try {
+                saveTasks();
+                System.out.println("Task with ID " + id + " marked as \"" +
+                        status + "\" successfully");
+            } catch (IOException e) {
+                System.out.println("ERROR: Failed to update task status: " +
+                        e.getMessage());
+            }
+        } else {
+            System.out.println(ERROR_TASK_NOT_FOUND);
+        }
+    }
 }

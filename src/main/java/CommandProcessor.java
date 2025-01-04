@@ -89,9 +89,7 @@ public class CommandProcessor {
                 if (arguments.length == 1) {
                     try {
                         int id = Integer.parseInt(arguments[0]);
-                        // TODO: implementation
-                        System.out.println("Task with ID " + id +
-                                " marked as \"To do\" successfully");
+                        taskRepository.markTask(id, TaskStatus.TODO);
                     } catch (NumberFormatException e) {
                         System.out.println(ERROR_INVALID_ID);
                     }
@@ -109,9 +107,7 @@ public class CommandProcessor {
                 if (arguments.length == 1) {
                     try {
                         int id = Integer.parseInt(arguments[0]);
-                        // TODO: implementation
-                        System.out.println("Task with ID " + id +
-                                " marked as \"In progress\" successfully");
+                        taskRepository.markTask(id, TaskStatus.IN_PROGRESS);
                     } catch (NumberFormatException e) {
                         System.out.println(ERROR_INVALID_ID);
                     }
@@ -129,9 +125,7 @@ public class CommandProcessor {
                 if (arguments.length == 1) {
                     try {
                         int id = Integer.parseInt(arguments[0]);
-                        // TODO: implementation
-                        System.out.println("Task with ID " + id +
-                                " marked as \"Done\" successfully");
+                        taskRepository.markTask(id, TaskStatus.DONE);
                     } catch (NumberFormatException e) {
                         System.out.println(ERROR_INVALID_ID);
                     }
