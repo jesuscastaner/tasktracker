@@ -1,5 +1,9 @@
 # TaskTracker
 
+TaskTracker is a lightweight command-line application for tracking and managing tasks. It offers functionality to add, update, delete and list tasks.
+
+TaskTracker is designed according to the guidelines of [this project](https://roadmap.sh/projects/task-tracker).
+
 ## Installation
 
 1. Ensure you have [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html) installed.
@@ -97,3 +101,9 @@ source ~/.bashrc
 ```bash
 rm -rf tasktracker
 ```
+
+## How to contribute
+
+Please, fork this repository and submit your changes via a [pull request](https://github.com/jesuscastaner/tasktracker/pulls).
+
+If you encounter any issues while using the application, feel free to [open an issue](https://github.com/jesuscastaner/tasktracker/issues).
