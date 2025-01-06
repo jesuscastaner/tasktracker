@@ -9,7 +9,8 @@ import java.util.List;
  * Serves as a repository for managing tasks stored in a JSON file.
  */
 public class TaskRepository {
-    private static final String ERROR_TASK_NOT_FOUND = "ERROR: Task not found";
+    private static final String ERROR_TASK_NOT_FOUND =
+            "ERROR: Task with ID %s not found";
     private static final Path FILE_PATH =
             Path.of("src/main/resources/tasks.json");
     private List<Task> tasks;
@@ -105,7 +106,7 @@ public class TaskRepository {
                         e.getMessage());
             }
         } else {
-            System.out.println(ERROR_TASK_NOT_FOUND);
+            System.out.printf(ERROR_TASK_NOT_FOUND + "\n", id);
         }
     }
 
@@ -137,8 +138,7 @@ public class TaskRepository {
                         e.getMessage());
             }
         } else {
-            System.out.println(ERROR_TASK_NOT_FOUND);
-        }
+            System.out.printf(ERROR_TASK_NOT_FOUND + "\n", id);        }
     }
 
     /**
@@ -172,8 +172,7 @@ public class TaskRepository {
                         e.getMessage());
             }
         } else {
-            System.out.println(ERROR_TASK_NOT_FOUND);
-        }
+            System.out.printf(ERROR_TASK_NOT_FOUND + "\n", id);        }
     }
 
     /**

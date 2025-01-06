@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class CommandProcessor {
     private static final String ERROR_INVALID_ARGUMENTS =
             "ERROR: Invalid argument(s)";
-    private static final String ERROR_INVALID_ID = "ERROR: Invalid ID";
-    private static final String ERROR_INVALID_STATUS = "ERROR: Invalid status";
+    private static final String ERROR_INVALID_ID =
+            "ERROR: \"%s\" is not a valid ID";
     private static final String ERROR_UNKNOWN_COMMAND =
             "ERROR: Command not recognized";
 
@@ -56,7 +56,9 @@ public class CommandProcessor {
                         String description = arguments[1];
                         taskRepository.updateTask(id, description);
                     } catch (NumberFormatException e) {
-                        System.out.println(ERROR_INVALID_ID);
+                        System.out.printf(
+                                ERROR_INVALID_ID + "\n",
+                                arguments[0]);
                     }
                 } else {
                     System.out.println(ERROR_INVALID_ARGUMENTS +
@@ -66,73 +68,89 @@ public class CommandProcessor {
 
             case "delete":
                 /*
-                Command to delete a task.
-                Expects one argument: <id>.
+                Command to delete tasks.
+                Expects one or more arguments: <id1> <id2> ... <idN>.
                  */
-                if (arguments.length == 1) {
-                    try {
-                        int id = Integer.parseInt(arguments[0]);
-                        taskRepository.deleteTask(id);
-                    } catch (NumberFormatException e) {
-                        System.out.println(ERROR_INVALID_ID);
+                if (arguments.length >= 1) {
+                    for (String argument : arguments) {
+                        try {
+                            int id = Integer.parseInt(argument);
+                            taskRepository.deleteTask(id);
+                        } catch (NumberFormatException e) {
+                            System.out.printf(
+                                    ERROR_INVALID_ID + "\n",
+                                    argument);
+                        }
                     }
                 } else {
                     System.out.println(ERROR_INVALID_ARGUMENTS +
-                            ". Use: delete <id>");
+                            ". Use: delete <id1> <id2> ... <idN>");
                 }
                 break;
 
             case "mark-todo":
                 /*
-                Command to mark a task as "To do".
-                Expects one argument: <id>.
+                Command to mark tasks as "To do".
+                Expects one or more arguments: <id1> <id2> ... <idN>.
                  */
-                if (arguments.length == 1) {
-                    try {
-                        int id = Integer.parseInt(arguments[0]);
-                        taskRepository.markTask(id, TaskStatus.TODO);
-                    } catch (NumberFormatException e) {
-                        System.out.println(ERROR_INVALID_ID);
+                if (arguments.length >= 1) {
+                    for (String argument : arguments) {
+                        try {
+                            int id = Integer.parseInt(argument);
+                            taskRepository.markTask(id, TaskStatus.TODO);
+                        } catch (NumberFormatException e) {
+                            System.out.printf(
+                                    ERROR_INVALID_ID + "\n",
+                                    argument);
+                        }
                     }
                 } else {
                     System.out.println(ERROR_INVALID_ARGUMENTS +
-                            ". Use: mark-todo <id>");
+                            ". Use: mark-todo <id1> <id2> ... <idN>");
                 }
                 break;
 
             case "mark-in-progress":
                 /*
-                Command to mark a task as "In progress".
-                Expects one argument: <id>.
+                Command to mark tasks as "In progress".
+                Expects one or more arguments: <id1> <id2> ... <idN>.
                  */
-                if (arguments.length == 1) {
-                    try {
-                        int id = Integer.parseInt(arguments[0]);
-                        taskRepository.markTask(id, TaskStatus.IN_PROGRESS);
-                    } catch (NumberFormatException e) {
-                        System.out.println(ERROR_INVALID_ID);
+                if (arguments.length >= 1) {
+                    for (String argument : arguments) {
+                        try {
+                            int id = Integer.parseInt(argument);
+                            taskRepository.markTask(id, TaskStatus.IN_PROGRESS);
+                        } catch (NumberFormatException e) {
+                            System.out.printf(
+                                    ERROR_INVALID_ID + "\n",
+                                    argument);
+                        }
                     }
                 } else {
                     System.out.println(ERROR_INVALID_ARGUMENTS +
-                            ". Use: mark-in-progress <id>");
+                            ". Use: mark-in-progress <id1> <id2> ... <idN>");
                 }
                 break;
 
             case "mark-done":
                 /*
-                Command to mark a task as "Done".
-                Expects one argument: <id>.
+                Command to mark tasks as "Done".
+                Expects one or more arguments: <id1> <id2> ... <idN>.
                  */
-                if (arguments.length == 1) {
-                    try {
-                        int id = Integer.parseInt(arguments[0]);
-                        taskRepository.markTask(id, TaskStatus.DONE);
-                    } catch (NumberFormatException e) {
-                        System.out.println(ERROR_INVALID_ID);
+                if (arguments.length >= 1) {
+                    for (String argument : arguments) {
+                        try {
+                            int id = Integer.parseInt(argument);
+                            taskRepository.markTask(id, TaskStatus.DONE);
+                        } catch (NumberFormatException e) {
+                            System.out.printf(
+                                    ERROR_INVALID_ID + "\n",
+                                    argument);
+                        }
                     }
                 } else {
                     System.out.println(ERROR_INVALID_ARGUMENTS +
-                            ". Use: mark-done <id>");
+                            ". Use: mark-done <id1> <id2> ... <idN>");
                 }
                 break;
 
@@ -154,7 +172,7 @@ public class CommandProcessor {
                             taskRepository.listTasks(TaskStatus.DONE);
                             break;
                         default:
-                            System.out.println(ERROR_INVALID_STATUS +
+                            System.out.println(ERROR_INVALID_ARGUMENTS +
                                     ". Use: list <todo|in-progress|done>");
                             break;
                     }
@@ -168,25 +186,17 @@ public class CommandProcessor {
                 Command to display help information.
                 Provides a summary of all available commands and their usage.
                  */
-                System.out.println("Available commands:");
-                System.out.println("  add \"<description>\"          " +
-                        "- Add a new task with given description.");
-                System.out.println("  update <id> \"<description>\"  " +
-                        "- Update description of task with given ID.");
-                System.out.println("  delete <id>                  " +
-                        "- Delete task with given ID.");
-                System.out.println("  mark-todo <id>               " +
-                        "- Mark task with given ID as \"To do\".");
-                System.out.println("  mark-in-progress <id>        " +
-                        "- Mark task with given ID as \"In progress\".");
-                System.out.println("  mark-done <id>               " +
-                        "- Mark task with given ID as \"Done\".");
-                System.out.println("  list                         " +
-                        "- List all tasks.");
-                System.out.println("  list <todo|in-progress|done> " +
-                        "- List tasks filtered by status.");
-                System.out.println("  help                         " +
-                        "- Display this help message.");
+                System.out.println("""
+                        add "<description>"                       - Add a new task with given description.
+                        update <id> "<description>"               - Update description of task with given ID.
+                        delete <id1> <id2> ... <idN> "            - Delete task with given ID.
+                        mark-todo <id1> <id2> ... <idN>           - Mark task with given ID as "To do".
+                        mark-in-progress <id1> <id2> ... <idN> "  - Mark task with given ID as "In progress".
+                        mark-done <id1> <id2> ... <idN>           - Mark task with given ID as "Done".
+                        list                                      - List all tasks.
+                        list <todo|in-progress|done>              - List tasks filtered by status.
+                        help                                      - Display this help message.
+                        """);
                 break;
 
             default:
