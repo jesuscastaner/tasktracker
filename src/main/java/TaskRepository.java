@@ -166,7 +166,7 @@ public class TaskRepository {
             try {
                 saveTasks();
                 System.out.println("Task with ID " + id + " marked as \"" +
-                        status + "\" successfully");
+                        status.getLabel() + "\" successfully");
             } catch (IOException e) {
                 System.out.println("ERROR: Failed to update task status: " +
                         e.getMessage());

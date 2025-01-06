@@ -23,7 +23,7 @@ public class Task {
 
     /**
      * Creates a new Task with the provided ID and description. Sets its status
-     * to "TODO" and its timestamps to the current time.
+     * to "To do" and its timestamps to the current time.
      *
      * @param id          The task ID.
      * @param description The task description.
@@ -135,7 +135,7 @@ public class Task {
     public String toString() {
         return "ID " + id + ":" +
                 "\n  Description: \"" + description + "\"" +
-                "\n  Status: " + status +
+                "\n  Status: " + status.getLabel() +
                 "\n  Created at: " + DATE_TIME_FORMATTER.format(createdAt) +
                 "\n  Updated at: " + DATE_TIME_FORMATTER.format(updatedAt);
     }

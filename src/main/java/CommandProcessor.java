@@ -176,11 +176,11 @@ public class CommandProcessor {
                 System.out.println("  delete <id>                  " +
                         "- Delete task with given ID.");
                 System.out.println("  mark-todo <id>               " +
-                        "- Mark task with given ID as \"TODO\".");
+                        "- Mark task with given ID as \"To do\".");
                 System.out.println("  mark-in-progress <id>        " +
-                        "- Mark task with given ID as \"IN_PROGRESS\".");
+                        "- Mark task with given ID as \"In progress\".");
                 System.out.println("  mark-done <id>               " +
-                        "- Mark task with given ID as \"DONE\".");
+                        "- Mark task with given ID as \"Done\".");
                 System.out.println("  list                         " +
                         "- List all tasks.");
                 System.out.println("  list <todo|in-progress|done> " +
@@ -188,6 +188,7 @@ public class CommandProcessor {
                 System.out.println("  help                         " +
                         "- Display this help message.");
                 break;
+
             default:
                 System.out.println(ERROR_UNKNOWN_COMMAND);
                 break;
