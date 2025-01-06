@@ -48,18 +48,18 @@ Update the description of a task:
 tasktracker update <id> "<description>"
 ```
 
-Delete a task:
+Delete one or more tasks:
 
 ```markdown
-delete <id>
+delete <id1> <id2> ... <idN>
 ```
 
-Mark a task as to do, in progress or done:"
+Change the status of one or more tasks:
 
 ```markdown
-tasktracker mark-todo
-tasktracker mark-in-progress
-tasktracker mark-done
+tasktracker mark-todo <id1> <id2> ... <idN>
+tasktracker mark-in-progress <id1> <id2> ... <idN>
+tasktracker mark-done <id1> <id2> ... <idN>
 ```
 
 List all tasks:
