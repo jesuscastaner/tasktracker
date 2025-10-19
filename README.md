@@ -1,6 +1,6 @@
 # TaskTracker
 
-TaskTracker is a lightweight command-line application for tracking and managing tasks. It offers functionality to add, update, delete and list tasks.
+TaskTracker is a lightweight command-line application for tracking and managing tasks. It offers functionality to add, update, delete, and list tasks. Task information is stored in a JSON file.
 
 TaskTracker is designed according to the guidelines of [this project](https://roadmap.sh/projects/task-tracker).
 

@@ -16,14 +16,15 @@ public class Task {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     /**
-     * Creates an empty Task with uninitialized fields.
+     * Constructs a Task with uninitialized fields.
      */
     public Task() {
     }
 
     /**
-     * Creates a new Task with the provided ID and description. Sets its status
-     * to "To do" and its timestamps to the current time.
+     * Constructs a Task with the provided ID and description.
+     * Sets its status to "To do" and its timestamps to the current date and
+     * time.
      *
      * @param id          The task ID.
      * @param description The task description.
@@ -39,7 +40,7 @@ public class Task {
     /**
      * Returns the ID of the task.
      *
-     * @return The task ID.
+     * @return The ID of the task.
      */
     public int getId() {
         return id;
@@ -48,7 +49,7 @@ public class Task {
     /**
      * Sets the ID of the task.
      *
-     * @param id The task ID.
+     * @param id The ID of the task.
      */
     public void setId(int id) {
         this.id = id;
@@ -57,7 +58,7 @@ public class Task {
     /**
      * Returns the description of the task.
      *
-     * @return The task description.
+     * @return The description of the task.
      */
     public String getDescription() {
         return description;
@@ -66,7 +67,7 @@ public class Task {
     /**
      * Sets the description of the task.
      *
-     * @param description The task description.
+     * @param description The description of the task.
      */
     public void setDescription(String description) {
         this.description = description;
@@ -75,7 +76,7 @@ public class Task {
     /**
      * Returns the status of the task.
      *
-     * @return The task status.
+     * @return The status of the task.
      */
     public TaskStatus getStatus() {
         return status;
@@ -84,7 +85,7 @@ public class Task {
     /**
      * Sets the status of the task.
      *
-     * @param status The task status.
+     * @param status The status of the task.
      */
     public void setStatus(TaskStatus status) {
         this.status = status;
@@ -93,7 +94,7 @@ public class Task {
     /**
      * Returns the creation timestamp of the task.
      *
-     * @return The creation timestamp.
+     * @return The creation timestamp of the task.
      */
     public LocalDateTime getCreatedAt() {
         return createdAt;
@@ -102,7 +103,7 @@ public class Task {
     /**
      * Sets the creation timestamp of the task.
      *
-     * @param createdAt The creation timestamp.
+     * @param createdAt The creation timestamp of the task.
      */
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
@@ -111,7 +112,7 @@ public class Task {
     /**
      * Returns the update timestamp of the task.
      *
-     * @return The update timestamp.
+     * @return The update timestamp of the task.
      */
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
@@ -120,7 +121,7 @@ public class Task {
     /**
      * Sets the update timestamp of the task.
      *
-     * @param updatedAt The update timestamp.
+     * @param updatedAt The update timestamp of the task.
      */
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;

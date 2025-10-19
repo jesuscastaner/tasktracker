@@ -4,8 +4,8 @@
 public class Main {
 
     /**
-     * Initializes the CommandProcessor instance and passes the command-line
-     * arguments to be processed for execution.
+     * Initializes the command processor and passes the command-line arguments
+     * to be processed for execution.
      *
      * @param args Command-line arguments.
      */

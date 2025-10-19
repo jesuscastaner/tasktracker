@@ -16,8 +16,8 @@ public class TaskRepository {
     private List<Task> tasks;
 
     /**
-     * Initializes the repository by loading tasks from the JSON file. If the
-     * file does not exist, it is created.
+     * Constructs a TaskRepository and loads all tasks from the JSON file into
+     * memory. If the file does not exist, it is created.
      */
     public TaskRepository() {
         try {
@@ -77,7 +77,7 @@ public class TaskRepository {
 
     /**
      * Updates the description of an existing task and sets its update
-     * timestamp to the current time.
+     * timestamp to the current date and time.
      *
      * @param id          The task ID.
      * @param description The new task description.
@@ -95,7 +95,7 @@ public class TaskRepository {
             }
         }
 
-        // If found, save the changes
+        // If found, save the changes to the file
         if (taskExists) {
             try {
                 saveTasks();
@@ -127,7 +127,7 @@ public class TaskRepository {
             }
         }
 
-        // If found, save the changes
+        // If found, save the changes to the file
         if (taskExists) {
             try {
                 saveTasks();
@@ -143,7 +143,7 @@ public class TaskRepository {
 
     /**
      * Updates the status of an existing task and sets its update timestamp to
-     * the current time.
+     * the current date and time.
      *
      * @param id     The task ID.
      * @param status The new task status.
@@ -161,7 +161,7 @@ public class TaskRepository {
             }
         }
 
-        // If found, save the changes
+        // If found, save the changes to the file
         if (taskExists) {
             try {
                 saveTasks();

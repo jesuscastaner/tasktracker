@@ -14,7 +14,7 @@ public class CommandProcessor {
     private final TaskRepository taskRepository;
 
     /**
-     * Creates a CommandProcessor and initializes the task repository.
+     * Constructs a CommandProcessor and initializes the task repository.
      */
     CommandProcessor() {
         taskRepository = new TaskRepository();
